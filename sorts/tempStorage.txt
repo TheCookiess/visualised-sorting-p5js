@@ -1,0 +1,114 @@
+// function mergeSort(arr) {
+//   let arr2 = [];
+//   let left, right;
+//   while (arr.length > 1) {
+//     left = arr.splice(0, arr.length / 2);
+//     right = arr;
+//     while (left.length && right.length) {
+//       if (left[0] < right[0]) {
+//         arr2.push(left.shift());
+//       } else {
+//         arr2.push(right.shift());
+//       }
+//     }
+//   }
+//   return [...arr2, ...left, ...right];
+// }
+
+// const mergeSort = (arr) => {
+//   //Create two arrays for sorting
+//   let sorted = Array.from(arr);
+//   let n = sorted.length;
+//   let buffer = new Array(n);
+
+//   for (let size = 1; size < n; size *= 2) {
+//     for (let leftStart = 0; leftStart < n; leftStart += 2 * size) {
+//       //Get the two sub arrays
+//       let left = leftStart,
+//         right = Math.min(left + size, n),
+//         leftLimit = right,
+//         rightLimit = Math.min(right + size, n);
+
+//       //Merge the sub arrays
+//       merge(left, right, leftLimit, rightLimit, sorted, buffer);
+//     }
+
+//     //Swap the sorted sub array and merge them
+//     let temp = sorted;
+//     sorted = buffer;
+//     buffer = temp;
+//   }
+
+//   return sorted;
+// };
+
+// const merge = (left, right, leftLimit, rightLimit, sorted, buffer) => {
+//   let i = left;
+
+//   //Compare the two sub arrays and merge them in the sorted order
+//   while (left < leftLimit && right < rightLimit) {
+//     if (sorted[left] <= sorted[right]) {
+//       buffer[i++] = sorted[left++];
+//     } else {
+//       buffer[i++] = sorted[right++];
+//     }
+//   }
+
+//   //If there are elements in the left sub arrray then add it to the result
+//   while (left < leftLimit) {
+//     buffer[i++] = sorted[left++];
+//   }
+
+//   //If there are elements in the right sub array then add it to the result
+//   while (right < rightLimit) {
+//     buffer[i++] = sorted[right++];
+//   }
+// };
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+// Steps:
+// Until: arr length === 1
+//          split arr
+// Until: arr amounts === 1:
+//          Combine arr && order arr elements doing so.
+
+/* iterative version.. brok e
+function dwa(arr1, arr2, arrLen) {
+  copyArr(arr1, 0, arrLen, arr2);
+  topDownSplitMerge(arr2, 0, arrLen, arr1);
+}
+
+function topDownSplitMerge(arr2, start, end, arr1) {
+  // base case.
+  if (end - start <= 1) return;
+
+  let middle = (start + end) / 2;
+  topDownSplitMerge(arr1, start, middle, arr2);
+  topDownSplitMerge(arr1, middle, end, arr2);
+  topDownMerge(arr2, start, middle, end, arr1);
+}
+
+function topDownMerge(arr2, start, middle, end, arr1) {
+  let i = start,
+    j = middle;
+  for (let k = start; k < end; k++) {
+    if (i < middle && (j >= end || arr1[i] <= arr1[j])) {
+      arr2[k] = arr1[i];
+      console.log(arr2[k], arr1[i]);
+      i++;
+    } else {
+      arr2[k] = arr1[j];
+      console.log(arr2[k], arr1[j]);
+      j++;
+    }
+  }
+}
+
+function copyArr(arr1, start, end, arr2) {
+  for (let k = start; k < end; k++) {
+    arr2[k] = arr1[k];
+  }
+}
+*/
